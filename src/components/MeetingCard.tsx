@@ -62,7 +62,7 @@ function MeetingCard({ interview }: { interview: Interview }) {
       <CardContent>
         {status === 'live' && (
           <Button
-            className='w-full'
+            className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
             onClick={() => joinMeeting(interview.streamCallId)}
           >
             Join Meeting
@@ -72,7 +72,7 @@ function MeetingCard({ interview }: { interview: Interview }) {
         {status === 'upcoming' && (
           <Button
             variant='outline'
-            className='w-full'
+            className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
             disabled
           >
             Waiting to Start

@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   DeviceSettings,
   useCall,
@@ -127,7 +128,7 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                 {/* JOIN BTN */}
                 <div className='space-y-3 mt-8'>
                   <Button
-                    className='w-full'
+                    className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
                     size='lg'
                     onClick={handleJoin}
                   >

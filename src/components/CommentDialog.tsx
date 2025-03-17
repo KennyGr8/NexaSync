@@ -78,7 +78,7 @@ function CommentDialog({ interviewId }: { interviewId: Id<'interviews'> }) {
       <DialogTrigger asChild>
         <Button
           variant='secondary'
-          className='w-full'
+          className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
         >
           <MessageSquareIcon className='h-4 w-4 mr-2' />
           Add Comment
@@ -191,10 +191,14 @@ function CommentDialog({ interviewId }: { interviewId: Id<'interviews'> }) {
           <Button
             variant='outline'
             onClick={() => setIsOpen(false)}
+            className='bg-gradient-to-l from-indigo-700 to-blue-400'
           >
             Cancel
           </Button>
-          <Button onClick={handleSubmit}>Submit</Button>
+          <Button
+            onClick={handleSubmit}
+            className='bg-gradient-to-r from-blue-400 to-indigo-700'
+          >Submit</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

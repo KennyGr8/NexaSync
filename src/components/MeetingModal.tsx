@@ -45,10 +45,15 @@ function MeetingModal({ isOpen, onClose, title, isJoinMeeting }: MeetingModalPro
           )}
 
           <div className="flex justify-end gap-3">
-            <Button variant="outline" onClick={onClose}>
+            <Button
+              className='bg-gradient-to-r from-red-400 to-red-700'
+              variant="outline" onClick={onClose}>
               Cancel
             </Button>
-            <Button onClick={handleStart} disabled={isJoinMeeting && !meetingUrl.trim()}>
+            <Button
+              className='bg-gradient-to-r from-blue-400 to-indigo-700'
+              onClick={handleStart} disabled={isJoinMeeting && !meetingUrl.trim()}
+            >
               {isJoinMeeting ? "Join Meeting" : "Start Meeting"}
             </Button>
           </div>

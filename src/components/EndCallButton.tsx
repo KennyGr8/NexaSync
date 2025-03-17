@@ -41,7 +41,10 @@ function EndCallButton() {
   };
 
   return (
-    <Button variant={"destructive"} onClick={endCall}>
+    <Button
+      variant={"destructive"} onClick={endCall}
+      className='bg-gradient-to-r from-blue-400 to-indigo-700'
+    >
       End Meeting
     </Button>
   );

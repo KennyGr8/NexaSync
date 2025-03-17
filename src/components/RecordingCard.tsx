@@ -57,13 +57,14 @@ function RecordingCard({ recording }: { recording: CallRecording }) {
       </CardContent>
       <CardFooter className='gap-2'>
         <Button
-          className='flex-1'
+          className='flex-1 bg-gradient-to-r from-blue-400 to-indigo-700'
           onClick={() => window.open(recording.url, '_blank')}
         >
           <PlayIcon className='size-4 mr-2' />
           Play Recording
         </Button>
         <Button
+          className='bg-gradient-to-r from-blue-400 to-indigo-700'
           variant='secondary'
           onClick={handleCopyLink}
         >

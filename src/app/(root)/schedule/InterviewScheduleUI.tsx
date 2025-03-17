@@ -132,60 +132,79 @@ function InterviewScheduleUI() {
   );
 
   return (
-    <div className="container max-w-7xl mx-auto p-6 space-y-8">
-      <div className="flex items-center justify-between">
+    <div className='container max-w-7xl mx-auto p-6 space-y-8'>
+      <div className='flex items-center justify-between'>
         {/* HEADER INFO */}
         <div>
-          <h1 className="text-3xl font-bold">Interviews</h1>
-          <p className="text-muted-foreground mt-1">Schedule and manage interviews</p>
+          <h1 className='text-3xl font-bold'>Interviews</h1>
+          <p className='text-muted-foreground mt-1'>
+            Schedule and manage interviews
+          </p>
         </div>
 
         {/* DIALOG */}
 
-        <Dialog open={open} onOpenChange={setOpen}>
+        <Dialog
+          open={open}
+          onOpenChange={setOpen}
+        >
           <DialogTrigger asChild>
-            <Button size="lg" className="bg-gradient-to-l from-cyan-500 to-blue-800">Schedule Interview</Button>
+            <Button
+              size='lg'
+              className='bg-gradient-to-l from-cyan-500 to-blue-800'
+            >
+              Schedule Interview
+            </Button>
           </DialogTrigger>
 
-          <DialogContent className="sm:max-w-[500px] h-[calc(100vh-200px)] overflow-auto">
+          <DialogContent className='sm:max-w-[500px] h-[calc(100vh-200px)] overflow-auto'>
             <DialogHeader>
               <DialogTitle>Schedule Interview</DialogTitle>
             </DialogHeader>
-            <div className="space-y-4 py-4">
+            <div className='space-y-4 py-4'>
               {/* INTERVIEW TITLE */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Title</label>
+              <div className='space-y-2'>
+                <label className='text-sm font-medium'>Title</label>
                 <Input
-                  placeholder="Interview title"
+                  placeholder='Interview title'
                   value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, title: e.target.value })
+                  }
                 />
               </div>
 
               {/* INTERVIEW DESC */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Description</label>
+              <div className='space-y-2'>
+                <label className='text-sm font-medium'>Description</label>
                 <Textarea
-                  placeholder="Interview description"
+                  placeholder='Interview description'
                   value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, description: e.target.value })
+                  }
                   rows={3}
                 />
               </div>
 
               {/* CANDIDATE */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Candidate</label>
+              <div className='space-y-2'>
+                <label className='text-sm font-medium'>Candidate</label>
                 <Select
                   value={formData.candidateId}
-                  onValueChange={(candidateId) => setFormData({ ...formData, candidateId })}
+                  onValueChange={(candidateId) =>
+                    setFormData({ ...formData, candidateId })
+                  }
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select candidate" />
+                    <SelectValue placeholder='Select candidate' />
                   </SelectTrigger>
                   <SelectContent>
                     {candidates.map((candidate) => (
-                      <SelectItem key={candidate.clerkId} value={candidate.clerkId}>
+                      <SelectItem
+                        key={candidate.clerkId}
+                        value={candidate.clerkId}
+                      >
                         <UserInfo user={candidate} />
                       </SelectItem>
                     ))}
@@ -194,21 +213,21 @@ function InterviewScheduleUI() {
               </div>
 
               {/* INTERVIEWERS */}
-              <div className="space-y-2">
-                <label className="text-sm font-medium">Interviewers</label>
-                <div className="flex flex-wrap gap-2 mb-2">
+              <div className='space-y-2'>
+                <label className='text-sm font-medium'>Interviewers</label>
+                <div className='flex flex-wrap gap-2 mb-2'>
                   {selectedInterviewers.map((interviewer) => (
                     <div
                       key={interviewer.clerkId}
-                      className="inline-flex items-center gap-2 bg-secondary px-2 py-1 rounded-md text-sm"
+                      className='inline-flex items-center gap-2 bg-secondary px-2 py-1 rounded-md text-sm'
                     >
                       <UserInfo user={interviewer} />
                       {interviewer.clerkId !== user?.id && (
                         <button
                           onClick={() => removeInterviewer(interviewer.clerkId)}
-                          className="hover:text-destructive transition-colors"
+                          className='hover:text-destructive transition-colors'
                         >
-                          <XIcon className="h-4 w-4" />
+                          <XIcon className='h-4 w-4' />
                         </button>
                       )}
                     </div>
@@ -217,11 +236,14 @@ function InterviewScheduleUI() {
                 {availableInterviewers.length > 0 && (
                   <Select onValueChange={addInterviewer}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Add interviewer" />
+                      <SelectValue placeholder='Add interviewer' />
                     </SelectTrigger>
                     <SelectContent>
                       {availableInterviewers.map((interviewer) => (
-                        <SelectItem key={interviewer.clerkId} value={interviewer.clerkId}>
+                        <SelectItem
+                          key={interviewer.clerkId}
+                          value={interviewer.clerkId}
+                        >
                           <UserInfo user={interviewer} />
                         </SelectItem>
                       ))}
@@ -231,33 +253,38 @@ function InterviewScheduleUI() {
               </div>
 
               {/* DATE & TIME */}
-              <div className="flex gap-4">
+              <div className='flex gap-4'>
                 {/* CALENDAR */}
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Date</label>
+                <div className='space-y-2'>
+                  <label className='text-sm font-medium'>Date</label>
                   <Calendar
-                    mode="single"
+                    mode='single'
                     selected={formData.date}
-                    onSelect={(date) => date && setFormData({ ...formData, date })}
+                    onSelect={(date) =>
+                      date && setFormData({ ...formData, date })
+                    }
                     disabled={(date) => date < new Date()}
-                    className="rounded-md border"
+                    className='rounded-md border'
                   />
                 </div>
 
                 {/* TIME */}
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Time</label>
+                <div className='space-y-2'>
+                  <label className='text-sm font-medium'>Time</label>
                   <Select
                     value={formData.time}
                     onValueChange={(time) => setFormData({ ...formData, time })}
                   >
                     <SelectTrigger>
-                      <SelectValue placeholder="Select time" />
+                      <SelectValue placeholder='Select time' />
                     </SelectTrigger>
                     <SelectContent>
                       {TIME_SLOTS.map((time) => (
-                        <SelectItem key={time} value={time}>
+                        <SelectItem
+                          key={time}
+                          value={time}
+                        >
                           {time}
                         </SelectItem>
                       ))}
@@ -267,18 +294,25 @@ function InterviewScheduleUI() {
               </div>
 
               {/* ACTION BUTTONS */}
-              <div className="flex justify-end gap-3 pt-4">
-                <Button variant="outline" onClick={() => setOpen(false)}>
+              <div className='flex justify-end gap-3 pt-4'>
+                <Button
+                  variant='outline'
+                  onClick={() => setOpen(false)}
+                >
                   Cancel
                 </Button>
-                <Button onClick={scheduleMeeting} disabled={isCreating}>
+                <Button
+                  className='bg-gradient-to-r from-blue-400 to-indigo-700'
+                  onClick={scheduleMeeting}
+                  disabled={isCreating}
+                >
                   {isCreating ? (
                     <>
-                      <Loader2Icon className="mr-2 size-4 animate-spin" />
+                      <Loader2Icon className='mr-2 size-4 animate-spin' />
                       Scheduling...
                     </>
                   ) : (
-                    "Schedule Interview"
+                    'Schedule Interview'
                   )}
                 </Button>
               </div>
@@ -289,21 +323,26 @@ function InterviewScheduleUI() {
 
       {/* LOADING STATE & MEETING CARDS */}
       {!interviews ? (
-        <div className="flex justify-center py-12">
-          <Loader2Icon className="size-8 animate-spin text-muted-foreground" />
+        <div className='flex justify-center py-12'>
+          <Loader2Icon className='size-8 animate-spin text-muted-foreground' />
         </div>
       ) : interviews.length > 0 ? (
-        <div className="spacey-4">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className='spacey-4'>
+          <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
             {interviews.map((interview) => (
-              <MeetingCard key={interview._id} interview={interview} />
+              <MeetingCard
+                key={interview._id}
+                interview={interview}
+              />
             ))}
           </div>
         </div>
       ) : (
-        <div className="text-center py-12 text-muted-foreground">No interviews scheduled</div>
+        <div className='text-center py-12 text-muted-foreground'>
+          No interviews scheduled
+        </div>
       )}
     </div>
-  );
+  )
 }
 export default InterviewScheduleUI;

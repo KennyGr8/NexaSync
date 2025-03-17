@@ -74,9 +74,9 @@ function MeetingRoom() {
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
+                        className='size-10 bg-gradient-to-r from-blue-400 to-indigo-700'
                         variant='outline'
                         size='icon'
-                        className='size-10'
                       >
                         <LayoutListIcon className='size-4' />
                       </Button>
@@ -94,7 +94,7 @@ function MeetingRoom() {
                   <Button
                     variant='outline'
                     size='icon'
-                    className='size-10'
+                    className='size-10 bg-gradient-to-r from-blue-400 to-indigo-700'
                     onClick={() => setShowParticipants(!showParticipants)}
                   >
                     <UsersIcon className='size-4' />

@@ -19,6 +19,7 @@ export function ModeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
+          className='bg-gradient-to-r from-blue-400 to-indigo-700'
           variant='outline'
           size='icon'
         >
