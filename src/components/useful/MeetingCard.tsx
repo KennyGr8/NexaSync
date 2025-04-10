@@ -1,17 +1,19 @@
-import useMeetingActions from '@/hooks/useMeetingActions'
-import { Doc } from '../../convex/_generated/dataModel'
-import { getMeetingStatus } from '@/lib/utils'
 import { format } from 'date-fns'
+import { CalendarIcon } from 'lucide-react'
+
+import useMeetingActions from '@/hooks/useMeetingActions'
+import { getMeetingStatus } from '@/lib/utils'
+
+import { Doc } from '@convex/_generated/dataModel'
+import { Badge } from '../ui/badge'
+import { Button } from '../ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from './ui/card'
-import { CalendarIcon } from 'lucide-react'
-import { Badge } from './ui/badge'
-import { Button } from './ui/button'
+} from '../ui/card'
 
 type Interview = Doc<'interviews'>
 
@@ -62,7 +64,7 @@ function MeetingCard({ interview }: { interview: Interview }) {
       <CardContent>
         {status === 'live' && (
           <Button
-            className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
+            className='w-full'
             onClick={() => joinMeeting(interview.streamCallId)}
           >
             Join Meeting
@@ -72,7 +74,7 @@ function MeetingCard({ interview }: { interview: Interview }) {
         {status === 'upcoming' && (
           <Button
             variant='outline'
-            className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
+            className='w-full'
             disabled
           >
             Waiting to Start

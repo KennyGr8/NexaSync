@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { Button } from "./ui/button";
 import { SparklesIcon } from "lucide-react";
+import Link from "next/link";
+
 import { useUserRole } from "@/hooks/useUserRole";
+
+import { Button } from "../ui/button";
 
 function DasboardBtn() {
   const { isCandidate, isLoading } = useUserRole();
@@ -12,7 +14,7 @@ function DasboardBtn() {
 
   return (
     <Link href={"/dashboard"}>
-      <Button className="gap-2 font-medium bg-gradient-to-l from-indigo-700 to-blue-400" size={"sm"}>
+      <Button className="gap-2 font-medium" size={"sm"}>
         <SparklesIcon className="size-4" />
         Dashboard
       </Button>

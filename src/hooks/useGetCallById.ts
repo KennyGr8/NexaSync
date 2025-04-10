@@ -1,32 +1,31 @@
-import { useEffect, useState } from 'react'
-import { Call, useStreamVideoClient } from '@stream-io/video-react-sdk'
+import { useState, useEffect } from "react";
+import { useStreamVideoClient, Call } from "@stream-io/video-react-sdk"; // ✅ Correct import
 
 const useGetCallById = (id: string | string[]) => {
-  const [call, setCall] = useState<Call>()
-  const [isCallLoading, setIsCallLoading] = useState(true)
+  const [call, setCall] = useState<Call | null>(null);
+  const [isCallLoading, setIsCallLoading] = useState(true);
 
-  const client = useStreamVideoClient()
+  const client = useStreamVideoClient();
 
   useEffect(() => {
-    if (!client) return
+    if (!client || !id) return;
 
     const getCall = async () => {
       try {
-        const { calls } = await client.queryCalls({ filter_conditions: { id } })
-
-        if (calls.length > 0) setCall(calls[0])
+        const call = client.call("default", id as string);
+        await call.get();
+        setCall(call); // ✅ Now `call` matches the imported `Call` type
+        setIsCallLoading(false);
       } catch (error) {
-        console.error(error)
-        setCall(undefined)
-      } finally {
-        setIsCallLoading(false)
+        console.error("Error fetching call:", error);
+        setIsCallLoading(false);
       }
-    }
+    };
 
-    getCall()
-  }, [client, id])
+    getCall();
+  }, [client, id]);
 
-  return { call, isCallLoading }
-}
+  return { call, isCallLoading };
+};
 
-export default useGetCallById
+export default useGetCallById;

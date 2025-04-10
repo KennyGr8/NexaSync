@@ -8,7 +8,13 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-  	extend: {
+		extend: {
+			animation: {
+				"spin-slow": "spin 3s linear infinite",
+				"spin-slower": "spin 5s linear infinite",
+				"spin": "spin 1s linear infinite",
+				"spin-faster": "spin 0.5s linear infinite",
+			},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',

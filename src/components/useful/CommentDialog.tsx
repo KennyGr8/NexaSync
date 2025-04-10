@@ -1,9 +1,16 @@
-import { useState } from 'react'
-import { Id } from '../../convex/_generated/dataModel'
 import { useMutation, useQuery } from 'convex/react'
-import { api } from '../../convex/_generated/api'
-import toast from 'react-hot-toast'
+import { format } from 'date-fns'
 import { MessageSquareIcon, StarIcon } from 'lucide-react'
+import { useState } from 'react'
+import toast from 'react-hot-toast'
+
+import { getInterviewerInfo } from '@/lib/utils'
+
+import { api } from '@convex/_generated/api'
+import { Id } from '@convex/_generated/dataModel'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { Badge } from '../ui/badge'
+import { Button } from '../ui/button'
 import {
   Dialog,
   DialogContent,
@@ -11,22 +18,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog'
-import { Button } from './ui/button'
-import { Badge } from './ui/badge'
-import { ScrollArea } from './ui/scroll-area'
-import { getInterviewerInfo } from '@/lib/utils'
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
-import { format } from 'date-fns'
-import { Label } from './ui/label'
+} from '../ui/dialog'
+import { Label } from '../ui/label'
+import { ScrollArea } from '../ui/scroll-area'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './ui/select'
-import { Textarea } from './ui/textarea'
+} from '../ui/select'
+import { Textarea } from '../ui/textarea'
 
 function CommentDialog({ interviewId }: { interviewId: Id<'interviews'> }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -61,7 +63,7 @@ function CommentDialog({ interviewId }: { interviewId: Id<'interviews'> }) {
       {[1, 2, 3, 4, 5].map((starValue) => (
         <StarIcon
           key={starValue}
-          className={`h-4 w-4 ${starValue <= rating ? 'fill-primary text-primary' : 'text-muted-foreground'}`}
+          className={`h-4 w-4 ${starValue <= rating ? 'fill-indigo text-blue' : 'text-muted-foreground'}`}
         />
       ))}
     </div>
@@ -78,7 +80,7 @@ function CommentDialog({ interviewId }: { interviewId: Id<'interviews'> }) {
       <DialogTrigger asChild>
         <Button
           variant='secondary'
-          className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
+          className='w-full'
         >
           <MessageSquareIcon className='h-4 w-4 mr-2' />
           Add Comment
@@ -191,13 +193,11 @@ function CommentDialog({ interviewId }: { interviewId: Id<'interviews'> }) {
           <Button
             variant='outline'
             onClick={() => setIsOpen(false)}
-            className='bg-gradient-to-l from-indigo-700 to-blue-400'
           >
             Cancel
           </Button>
           <Button
             onClick={handleSubmit}
-            className='bg-gradient-to-r from-blue-400 to-indigo-700'
           >Submit</Button>
         </DialogFooter>
       </DialogContent>

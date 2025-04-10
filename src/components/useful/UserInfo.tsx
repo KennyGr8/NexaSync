@@ -1,6 +1,8 @@
 import { UserCircleIcon } from 'lucide-react'
-import { Doc } from '../../convex/_generated/dataModel'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+
+import { Doc } from '@convex/_generated/dataModel'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+
 
 type User = Doc<'users'>
 

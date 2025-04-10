@@ -1,14 +1,15 @@
-import React from 'react'
 import {
   DeviceSettings,
   useCall,
   VideoPreview,
 } from '@stream-io/video-react-sdk'
-import { useEffect, useState } from 'react'
-import { Card } from './ui/card'
 import { CameraIcon, MicIcon, SettingsIcon } from 'lucide-react'
-import { Switch } from './ui/switch'
-import { Button } from './ui/button'
+import React from 'react'
+import { useEffect, useState } from 'react'
+
+import { Button } from '../ui/button'
+import { Card } from '../ui/card'
+import { Switch } from '../ui/switch'
 
 function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
   const [isCameraDisabled, setIsCameraDisabled] = useState(true)
@@ -128,15 +129,14 @@ function MeetingSetup({ onSetupComplete }: { onSetupComplete: () => void }) {
                 {/* JOIN BTN */}
                 <div className='space-y-3 mt-8'>
                   <Button
-                    className='w-full bg-gradient-to-r from-blue-400 to-indigo-700'
+                    className='w-full'
                     size='lg'
                     onClick={handleJoin}
                   >
                     Join Meeting
                   </Button>
                   <p className='text-xs text-center text-muted-foreground'>
-                    Do not worry, our team is super friendly! We want you to
-                    succeed. 🎉
+                    We're here to support you — your success is our priority. 🎉
                   </p>
                 </div>
               </div>

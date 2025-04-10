@@ -1,11 +1,14 @@
 'use client'
 
-import LoaderUI from '@/components/LoaderUI'
-import RecordingCard from '@/components/RecordingCard'
-import { ScrollArea } from '@/components/ui/scroll-area'
-import useGetCalls from '@/hooks/useGetCalls'
 import { CallRecording } from '@stream-io/video-react-sdk'
 import { useEffect, useState } from 'react'
+
+import { ScrollArea } from '@/components/ui/scroll-area'
+import useGetCalls from '@/hooks/useGetCalls'
+
+import LoaderUI from '@/components/useful/LoaderUI'
+import RecordingCard from '@/components/useful/RecordingCard'
+
 
 function RecordingsPage() {
   const { calls, isLoading } = useGetCalls()
@@ -43,7 +46,6 @@ function RecordingsPage() {
       </p>
 
       {/* RECORDINGS GRID */}
-
       <ScrollArea className='h-[calc(100vh-12rem)] mt-3'>
         {recordings.length > 0 ? (
           <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 pb-6'>

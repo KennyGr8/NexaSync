@@ -9,20 +9,21 @@ import {
 import { LayoutListIcon, LoaderIcon, UsersIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from './ui/resizable'
+
+import CodeEditor from './CodeEditor'
+import EndCallButton from './EndCallButton'
+import { Button } from '../ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu'
-import { Button } from './ui/button'
-import EndCallButton from './EndCallButton'
-import CodeEditor from './CodeEditor'
+} from '../ui/dropdown-menu'
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from '../ui/resizable'
 
 function MeetingRoom() {
   const router = useRouter()
@@ -74,9 +75,9 @@ function MeetingRoom() {
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button
-                        className='size-10 bg-gradient-to-r from-blue-400 to-indigo-700'
+                        className='size-10'
                         variant='outline'
-                        size='icon'
+                         size='icon'
                       >
                         <LayoutListIcon className='size-4' />
                       </Button>
@@ -94,7 +95,7 @@ function MeetingRoom() {
                   <Button
                     variant='outline'
                     size='icon'
-                    className='size-10 bg-gradient-to-r from-blue-400 to-indigo-700'
+                    className='size-10'
                     onClick={() => setShowParticipants(!showParticipants)}
                   >
                     <UsersIcon className='size-4' />

@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+
 import useMeetingActions from "@/hooks/useMeetingActions";
+
+import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
+import { Input } from "../ui/input";
 
 interface MeetingModalProps {
   isOpen: boolean;
@@ -46,12 +48,10 @@ function MeetingModal({ isOpen, onClose, title, isJoinMeeting }: MeetingModalPro
 
           <div className="flex justify-end gap-3">
             <Button
-              className='bg-gradient-to-r from-red-400 to-red-700'
               variant="outline" onClick={onClose}>
               Cancel
             </Button>
             <Button
-              className='bg-gradient-to-r from-blue-400 to-indigo-700'
               onClick={handleStart} disabled={isJoinMeeting && !meetingUrl.trim()}
             >
               {isJoinMeeting ? "Join Meeting" : "Start Meeting"}

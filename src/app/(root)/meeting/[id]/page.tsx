@@ -1,18 +1,20 @@
 'use client'
 
-import LoaderUI from '@/components/LoaderUI'
-import MeetingRoom from '@/components/MeetingRoom'
-import MeetingSetup from '@/components/MeetingSetup'
-import useGetCallById from '@/hooks/useGetCallById'
 import { useUser } from '@clerk/nextjs'
 import { StreamCall, StreamTheme } from '@stream-io/video-react-sdk'
 import { useParams } from 'next/navigation'
 import { useState } from 'react'
 
+import useGetCallById from '@/hooks/useGetCallById'
+
+import LoaderUI from '@/components/useful/LoaderUI'
+import MeetingRoom from '@/components/useful/MeetingRoom'
+import MeetingSetup from '@/components/useful/MeetingSetup'
+
 function MeetingPage() {
   const { id } = useParams()
   const { isLoaded } = useUser()
-  const { call, isCallLoading } = useGetCallById(id)
+  const { call, isCallLoading } = useGetCallById(id as string)
 
   const [isSetupComplete, setIsSetupComplete] = useState(false)
 
@@ -21,7 +23,7 @@ function MeetingPage() {
   if (!call) {
     return (
       <div className='h-screen flex items-center justify-center'>
-        <p className='text-2xl font-semibold'>Meeting not found</p>
+        <p className='text-2xl font-semibold'>Meeting does not exist</p>
       </div>
     )
   }

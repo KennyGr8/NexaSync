@@ -1,21 +1,24 @@
-import { CODING_QUESTIONS, LANGUAGES } from '@/constants'
+import Editor from '@monaco-editor/react'
+import { AlertCircleIcon, BookIcon, LightbulbIcon } from 'lucide-react'
 import { useState } from 'react'
+
+import { CODING_QUESTIONS, LANGUAGES } from '@/constants'
+
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
-} from './ui/resizable'
-import { ScrollArea, ScrollBar } from './ui/scroll-area'
+} from '../ui/resizable'
+import { ScrollArea, ScrollBar } from '../ui/scroll-area'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './ui/select'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
-import { AlertCircleIcon, BookIcon, LightbulbIcon } from 'lucide-react'
-import Editor from '@monaco-editor/react'
+} from '../ui/select'
+
 
 function CodeEditor() {
   const [selectedQuestion, setSelectedQuestion] = useState(CODING_QUESTIONS[0])
@@ -219,7 +222,7 @@ function CodeEditor() {
               scrollBeyondLastLine: false,
               automaticLayout: true,
               padding: { top: 16, bottom: 16 },
-              wordWrap: 'on',
+               wordWrap: 'on',
               wrappingIndent: 'indent',
             }}
           />

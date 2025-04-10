@@ -1,16 +1,15 @@
 'use client'
 
-import * as React from 'react'
-import { Moon, MoonIcon, Sun } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '../ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '../ui/dropdown-menu'
 
 export function ModeToggle() {
   const { setTheme } = useTheme()
@@ -19,7 +18,7 @@ export function ModeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          className='bg-gradient-to-r from-blue-400 to-indigo-700'
+          className='text-indigo-400 dark:text-indigo-800'
           variant='outline'
           size='icon'
         >

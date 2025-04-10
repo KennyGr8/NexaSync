@@ -1,9 +1,12 @@
 'use client'
 
-import LoaderUI from '@/components/LoaderUI'
-import { useUserRole } from '@/hooks/useUserRole'
 import { useRouter } from 'next/navigation'
+
+import { useUserRole } from '@/hooks/useUserRole'
+
 import InterviewScheduleUI from './InterviewScheduleUI'
+
+import LoaderUI from '@/components/useful/LoaderUI'
 
 function SchedulePage() {
   const router = useRouter()

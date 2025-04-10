@@ -13,7 +13,9 @@ export const streamTokenProvider = async () => {
     process.env.STREAM_SECRET_KEY!
   );
 
-  const token = streamClient.generateUserToken({ user_id: user.id });
+  const token = streamClient.generateUserToken({ 
+    user_id: user.id
+  });
 
   return token;
 };

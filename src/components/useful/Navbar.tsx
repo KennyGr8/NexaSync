@@ -1,10 +1,12 @@
 "use client"
 
-import Link from "next/link";
-import { ModeToggle } from "./ModeToggle";
-import { CodeIcon } from "lucide-react";
 import { SignedIn, UserButton } from "@clerk/nextjs";
+import { CodeIcon } from "lucide-react";
+import Link from "next/link";
+
 import DasboardBtn from "./DashboardBtn";
+import { ModeToggle } from "./ModeToggle";
+
 
 function Navbar() {
   return (
@@ -14,9 +16,10 @@ function Navbar() {
         <Link
           href="/"
           className="flex items-center gap-2 font-black text-2xl mr-6 font-mono hover:opacity-80 transition-opacity"
+          title="NexaSync"
         >
           <CodeIcon className="size-8 text-indigo-500" />
-          <span className="bg-gradient-to-r from-blue-400 to-indigo-700 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-black text-transparent">
             NexaSync
           </span>
         </Link>

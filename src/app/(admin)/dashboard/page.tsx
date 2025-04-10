@@ -1,20 +1,23 @@
 "use client";
 
 import { useMutation, useQuery } from "convex/react";
+import { format } from "date-fns";
+import { CalendarIcon, CheckCircle2Icon, ClockIcon, XCircleIcon } from "lucide-react";
+import Link from "next/link";
+import toast from "react-hot-toast";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { INTERVIEW_CATEGORY } from "@/constants";
+import { getCandidateInfo, groupInterviews } from "@/lib/utils";
+
 import { api } from "../../../../convex/_generated/api";
 import { Doc, Id } from "../../../../convex/_generated/dataModel";
-import toast from "react-hot-toast";
-import LoaderUI from "@/components/LoaderUI";
-import { getCandidateInfo, groupInterviews } from "@/lib/utils";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { INTERVIEW_CATEGORY } from "@/constants";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { CalendarIcon, CheckCircle2Icon, ClockIcon, XCircleIcon } from "lucide-react";
-import { format } from "date-fns";
-import CommentDialog from "@/components/CommentDialog";
+
+import CommentDialog from "@/components/useful/CommentDialog";
+import LoaderUI from "@/components/useful/LoaderUI";
 
 type Interview = Doc<"interviews">;
 
@@ -40,7 +43,7 @@ function DashboardPage() {
     <div className="container mx-auto py-10">
       <div className="flex items-center mb-8">
         <Link href="/schedule">
-          <Button className="bg-gradient-to-r from-cyan-400 to-purple-700 hover:spin">Schedule New Interview</Button>
+          <Button>Schedule New Interview</Button>
         </Link>
       </div>
 
@@ -61,7 +64,9 @@ function DashboardPage() {
                     const startTime = new Date(interview.startTime);
 
                     return (
-                      <Card className="hover:shadow-md transition-all">
+                      <Card 
+                      key={interview._id}
+                      className="hover:shadow-md transition-all">
                         {/* CANDIDATE INFO */}
                         <CardHeader className="p-4">
                           <div className="flex items-center gap-3">

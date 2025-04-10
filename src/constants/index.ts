@@ -8,8 +8,6 @@ export const INTERVIEW_CATEGORY = [
 ] as const;
 
 export const TIME_SLOTS = [
-
-
   "09:00",
   "09:30",
   "10:00",
@@ -21,7 +19,7 @@ export const TIME_SLOTS = [
   "13:00",
   "13:30",
   "14:00",
-  "14:35",
+  "14:30",
   "15:00",
   "15:30",
   "16:00",
@@ -35,23 +33,20 @@ export const TIME_SLOTS = [
   "20:00",
   "20:30",
   "21:00",
-  "23:00",
-  "23:30",
-  "00:00",
 ];
 
 export const QUICK_ACTIONS = [
   {
     icon: Code2,
     title: "New Call",
-    description: "Start an instant call",
+    description: "Kickstart an urgent call",
     color: "primary",
     gradient: "from-primary/10 via-primary/5 to-transparent",
   },
   {
     icon: Users,
     title: "Join Interview",
-    description: "Enter via invitation link",
+    description: "Hop in via a valid invite link",
     color: "purple-500",
     gradient: "from-purple-500/10 via-purple-500/5 to-transparent",
   },
@@ -65,7 +60,7 @@ export const QUICK_ACTIONS = [
   {
     icon: Clock,
     title: "Recordings",
-    description: "Access past interviews",
+    description: "View and assess key moments",
     color: "orange-500",
     gradient: "from-orange-500/10 via-orange-500/5 to-transparent",
   },

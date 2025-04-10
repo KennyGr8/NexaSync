@@ -1,9 +1,12 @@
 import { useUser } from "@clerk/nextjs";
 import { useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useMutation, useQuery } from "convex/react";
+import { Loader2Icon, XIcon } from "lucide-react";
 import { useState } from "react";
-import { api } from "../../../../convex/_generated/api";
 import toast from "react-hot-toast";
+
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Dialog,
   DialogHeader,
@@ -11,9 +14,7 @@ import {
   DialogTrigger,
   DialogContent,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -21,11 +22,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import UserInfo from "@/components/UserInfo";
-import { Loader2Icon, XIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
+import { Textarea } from "@/components/ui/textarea";
 import { TIME_SLOTS } from "@/constants";
-import MeetingCard from "@/components/MeetingCard";
+
+import { api } from "../../../../convex/_generated/api";
+
+import MeetingCard from "@/components/useful/MeetingCard";
+import UserInfo from "@/components/useful/UserInfo";
 
 function InterviewScheduleUI() {
   const client = useStreamVideoClient();
@@ -151,7 +154,6 @@ function InterviewScheduleUI() {
           <DialogTrigger asChild>
             <Button
               size='lg'
-              className='bg-gradient-to-l from-cyan-500 to-blue-800'
             >
               Schedule Interview
             </Button>
@@ -302,7 +304,6 @@ function InterviewScheduleUI() {
                   Cancel
                 </Button>
                 <Button
-                  className='bg-gradient-to-r from-blue-400 to-indigo-700'
                   onClick={scheduleMeeting}
                   disabled={isCreating}
                 >
